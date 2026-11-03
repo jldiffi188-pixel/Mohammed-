@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محمد کعبی | فروشگاه خرما</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Tahoma,Arial,sans-serif;background:#f6fff8;color:#173b28}
+header{background:#08783f;color:#fff;padding:16px 6%;display:flex;align-items:center;justify-content:space-between;gap:15px;position:sticky;top:0;z-index:10;box-shadow:0 3px 15px #0002}
+.logo{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:bold}
+.palm{font-size:34px}
+nav a{color:#fff;text-decoration:none;margin:0 8px}
+.cart-btn,.main-btn,.add-btn{border:0;cursor:pointer;border-radius:10px;font-family:inherit}
+.cart-btn{background:#fff;color:#08783f;padding:10px 15px;font-weight:bold}
+.hero{text-align:center;padding:75px 20px;background:linear-gradient(135deg,#e3f9eb,#fff)}
+.hero h1{font-size:40px;color:#08783f;margin-bottom:15px}
+.hero p{font-size:18px;margin-bottom:25px}
+.main-btn{background:#08783f;color:#fff;padding:13px 24px;text-decoration:none;display:inline-block}
+.section{padding:55px 6%}
+.title{text-align:center;color:#08783f;font-size:30px;margin-bottom:30px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.product{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 5px 20px #0001}
+.product-img{height:190px;background:#e1f7e9;display:flex;align-items:center;justify-content:center;font-size:72px}
+.info{padding:18px}
+.info h3{margin-bottom:9px}
+.info p{color:#64756b;line-height:1.8;font-size:14px;min-height:52px}
+.price{color:#08783f;font-size:18px;font-weight:bold;margin:15px 0}
+.add-btn{width:100%;padding:11px;background:#08783f;color:#fff}
+.about{text-align:center;background:#fff;line-height:2}
+footer{background:#075d33;color:#fff;text-align:center;padding:25px}
+.cart{position:fixed;top:0;left:-390px;width:360px;max-width:90%;height:100vh;background:#fff;z-index:20;padding:22px;box-shadow:5px 0 25px #0003;transition:.3s;overflow:auto}
+.cart.open{left:0}
+.cart-head{display:flex;justify-content:space-between;align-items:center;color:#08783f;margin-bottom:20px}
+.close{border:0;padding:8px;border-radius:7px;cursor:pointer}
+.item{border-bottom:1px solid #ddd;padding:13px 0}
+.qty{display:flex;gap:8px;align-items:center;margin-top:8px}
+.qty button{border:0;background:#08783f;color:#fff;width:28px;height:28px;border-radius:6px;cursor:pointer}
+.total{font-weight:bold;font-size:19px;color:#08783f;margin:20px 0}
+.checkout{width:100%;padding:13px;background:#08783f;color:#fff;border:0;border-radius:9px;cursor:pointer;font-family:inherit}
+@media(max-width:700px){header{flex-wrap:wrap}nav{width:100%;text-align:center}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><span class="palm">🌴</span> محمد کعبی</div>
+  <nav>
+    <a href="#home">خانه</a>
+    <a href="#products">محصولات</a>
+    <a href="#about">درباره ما</a>
+  </nav>
+  <button class="cart-btn" onclick="openCart()">🛒 سبد خرید (<span id="count">۰</span>)</button>
+</header>
+
+<section class="hero" id="home">
+  <h1>فروشگاه خرمای محمد کعبی 🌴</h1>
+  <p>عرضه انواع خرمای باکیفیت و خوش‌طعم</p>
+  <a class="main-btn" href="#products">مشاهده محصولات</a>
+</section>
+
+<section class="section" id="products">
+  <h2 class="title">محصولات ما</h2>
+  <div class="products">
+
+    <article class="product">
+      <div class="product-img">🌴</div>
+      <div class="info">
+        <h3>خارک</h3>
+        <p>خارک تازه و خوش‌طعم، مناسب مصرف روزانه و پذیرایی.</p>
+        <div class="price">قیمت: تماس بگیرید</div>
+        <button class="add-btn" onclick="add('خارک')">افزودن به سبد</button>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-img">🌴</div>
+      <div class="info">
+        <h3>رطب</h3>
+        <p>رطب خوش‌طعم و باکیفیت، انتخابی مناسب برای دوستداران خرما.</p>
+        <div class="price">قیمت: تماس بگیرید</div>
+        <button class="add-btn" onclick="add('رطب')">افزودن به سبد</button>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-img">🌴</div>
+      <div class="info">
+        <h3>برحی</h3>
+        <p>خرمای برحی با طعم شیرین و دلپذیر.</p>
+        <div class="price">قیمت: تماس بگیرید</div>
+        <button class="add-btn" onclick="add('برحی')">افزودن به سبد</button>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-img">🌴</div>
+      <div class="info">
+        <h3>اخلاص</h3>
+        <p>محصول اخلاص با کیفیت مناسب برای خرید و پذیرایی.</p>
+        <div class="price">قیمت: تماس بگیرید</div>
+        <button class="add-btn" onclick="add('اخلاص')">افزودن به سبد</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <h2 class="title">درباره ما</h2>
+  <p>به فروشگاه محمد کعبی خوش آمدید؛ ارائه‌دهنده محصولات خرما با طراحی ساده و خرید آسان.</p>
+</section>
+
+<div class="cart" id="cart">
+  <div class="cart-head">
+    <h2>🛒 سبد خرید</h2>
+    <button class="close" onclick="closeCart()">✕</button>
+  </div>
+  <div id="items"></div>
+  <div class="total">تعداد: <span id="total">۰</span></div>
+  <button class="checkout" onclick="checkout()">ثبت سفارش</button>
+</div>
+
+<footer>© ۱۴۰۵ فروشگاه محمد کعبی | 🌴</footer>
+
+<script>
+let cart=[];
+function add(name){
+  const x=cart.find(i=>i.name===name);
+  if(x)x.qty++;
+  else cart.push({name,qty:1});
+  update(); openCart();
+}
+function update(){
+  const box=document.getElementById('items');
+  box.innerHTML='';
+  let n=0;
+  cart.forEach((x,i)=>{
+    n+=x.qty;
+    box.innerHTML+=`<div class="item"><b>${x.name}</b>
+    <div class="qty">
+      <button onclick="change(${i},1)">+</button>
+      <span>${x.qty.toLocaleString('fa-IR')}</span>
+      <button onclick="change(${i},-1)">−</button>
+      <button onclick="removeItem(${i})">حذف</button>
+    </div></div>`;
+  });
+  document.getElementById('count').textContent=n.toLocaleString('fa-IR');
+  document.getElementById('total').textContent=n.toLocaleString('fa-IR');
+}
+function change(i,v){
+  cart[i].qty+=v;
+  if(cart[i].qty<=0)cart.splice(i,1);
+  update();
+}
+function removeItem(i){cart.splice(i,1);update()}
+function openCart(){document.getElementById('cart').classList.add('open')}
+function closeCart(){document.getElementById('cart').classList.remove('open')}
+function checkout(){
+  if(!cart.length){alert('سبد خرید خالی است.');return}
+  alert('سفارش شما ثبت شد. برای پرداخت آنلاین باید درگاه پرداخت به سایت متصل شود.');
+}
+</script>
+</body>
+</html>
